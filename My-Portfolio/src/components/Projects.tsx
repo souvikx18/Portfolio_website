@@ -1,7 +1,17 @@
 import { motion } from "framer-motion";
 import { ExternalLink, Github } from "lucide-react";
 
-const projects = [
+interface Project {
+  title: string;
+  description: string;
+  tech: string[];
+  live: string;
+  github: string;
+  color: string;
+  image?: string;
+}
+
+const projects: Project[] = [
   {
     title: "Tic-Tac-Toe Game",
     description: "A beautifully designed, interactive Tic-Tac-Toe experience featuring personalized user accounts, seamless multiplayer gameplay, and competitive score tracking.",
@@ -60,10 +70,9 @@ const Projects = () => {
               <div className="relative glass h-full flex flex-col rounded-[2.5rem] overflow-hidden transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-[0_8px_30px_rgb(0,0,0,0.2)] group-hover:border-white/20">
                 {/* Visual Header */}
                 <div className={`relative h-64 md:h-80 bg-gradient-to-br ${project.color} overflow-hidden`}>
-                  {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
-                  {(project as any).image && (
+                  {project.image && (
                     <img
-                      src={(project as any).image}
+                      src={project.image}
                       alt={project.title}
                       className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
